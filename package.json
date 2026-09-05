@@ -1,0 +1,18 @@
+{
+  "name": "clearplay",
+  "private": true,
+  "version": "0.1.0",
+  "description": "ClearPlay — a distraction-free video experience platform.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm --workspace apps/web run dev",
+    "build": "npm --workspace apps/web run build",
+    "lint": "npm --workspace apps/web run lint"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
