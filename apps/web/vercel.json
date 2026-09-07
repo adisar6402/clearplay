@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/moment",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp|Googlebot|bingbot|Slackbot|Discordbot|TelegramBot|Pinterest|Applebot).*"
+        }
+      ],
+      "destination": "/api/moment"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

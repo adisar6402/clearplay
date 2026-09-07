@@ -14,6 +14,15 @@ interface VideoPlayerProps {
   onPositionChange?: (position: number) => void
 }
 
+type FullscreenShell = HTMLDivElement & {
+  webkitRequestFullscreen?: () => Promise<void> | void
+}
+
+type FullscreenDocument = Document & {
+  webkitFullscreenElement?: Element | null
+  webkitExitFullscreen?: () => Promise<void> | void
+}
+
 export function VideoPlayer({ url, initialPosition = 0, autoplay = false, onProgress, onMetadata, onDuration, onShareMoment, onPositionChange }: VideoPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const onProgressRef = useRef(onProgress)
@@ -123,10 +132,19 @@ export function VideoPlayer({ url, initialPosition = 0, autoplay = false, onProg
   }
 
   const toggleFullscreen = () => {
-    const element = containerRef.current?.parentElement
+    const element = containerRef.current?.parentElement as FullscreenShell | null
     if (!element) return
-    if (document.fullscreenElement) void document.exitFullscreen()
-    else void element.requestFullscreen()
+
+    const fullscreenDocument = document as FullscreenDocument
+    const activeElement = document.fullscreenElement || fullscreenDocument.webkitFullscreenElement
+    if (activeElement) {
+      const exitFullscreen = document.exitFullscreen || fullscreenDocument.webkitExitFullscreen
+      if (exitFullscreen) void Promise.resolve(exitFullscreen.call(document)).catch(() => undefined)
+      return
+    }
+
+    const requestFullscreen = element.requestFullscreen || element.webkitRequestFullscreen
+    if (requestFullscreen) void Promise.resolve(requestFullscreen.call(element)).catch(() => undefined)
   }
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
