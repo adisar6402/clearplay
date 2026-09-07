@@ -24,4 +24,6 @@ Thumbs.db
 
 # Temporary files
 *.tmp
-*.temp
+
+# ClearPlay source asset archive
+CLEARPLAY-ASSETS.zip
