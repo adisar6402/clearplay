@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "@clearplay/core": "workspace:*",
+    "@clearplay/core": "^0.1.0",
     "idb": "^8.0.2"
   },
   "devDependencies": {

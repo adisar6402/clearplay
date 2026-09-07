@@ -202,7 +202,7 @@ npm run build
 
 ### Development / Troubleshooting
 
-The checked-in workspace uses the `workspace:*` dependency protocol for `@clearplay/core`. The current npm runtime available for this repository (`npm 11.19.0`) rejects that protocol during a fresh `npm install`, even though the workspace scripts run successfully with the existing installed dependencies. This is a repository bootstrap issue, not a runtime workaround. Do not edit application code merely to hide it; resolve package-manager compatibility or workspace dependency metadata before treating a clean npm install as supported.
+The checked-in workspace uses npm workspaces, with `apps/web` consuming the local `@clearplay/core` package through an npm-compatible semver dependency range. Run `npm install` from the repository root so npm resolves and links the workspace packages before running the workspace scripts.
 
 ## Engineering boundaries
 
