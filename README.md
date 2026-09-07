@@ -219,4 +219,8 @@ ClearPlay is an MVP under active development. Multi-platform playback, provider-
 
 ## License
 
-No license file is present in this repository. Licensing is pending; do not assume permission to reuse, distribute, or contribute code beyond the rights granted by the repository owner.
+Copyright © 2026 Abdulrahman Adisa Amuda.
+
+This project is currently proprietary. All rights are reserved unless otherwise stated.
+
+The source code, design, branding, assets, and other materials in this repository may not be reproduced, modified, distributed, or used commercially without prior permission from the project owner.
