@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Local development runtime
+.tools/
+
 # Build output
 dist/
 **/dist/
